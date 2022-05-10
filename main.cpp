@@ -6,6 +6,8 @@ DWORD Entities = 0x50F500;
 
 int main()
 {
+	//UPDATED FOR EASIER READABILITY!
+	
 	DWORD Health = 0xF8;
 	DWORD ARammo = 0x150;
 
