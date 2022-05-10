@@ -8,16 +8,20 @@ int main()
 {
 	DWORD Health = 0xF8;
 	DWORD ARammo = 0x150;
-	//read
-	float healthval = *reinterpret_cast<int*>(*reinterpret_cast<uintptr_t*>(BaseAddress) + Health);
-	int Arammoval = *reinterpret_cast<int*>(*reinterpret_cast<uintptr_t*>(BaseAddress) + ARammo);
 
-	//write
-	do
+	int healthvalr = static_cast<int>((BaseAddress) + Health);
+	int* healhval = &healthvalr;
+	int BH = *(int*)BaseAddress + Health;
+
+	int ammovaluer = static_cast<int>((BaseAddress)+ARammo);
+	int* ammovalue = &ammovaluer;
+	int AH = *(int*)BaseAddress + ARammo;
+	
+    while(1)
 	{
-	*reinterpret_cast<int*>(*reinterpret_cast<uintptr_t*>(BaseAddress) + Health) = 99999;
-	*reinterpret_cast<int*>(*reinterpret_cast<uintptr_t*>(BaseAddress) + ARammo) = 1337;
-	} while (healthval <= 0 || healthval <= 100);
+		*(int*)BH = 1337;
+		*(int*)AH = 42069;	    
+	}
 }
 
 BOOL WINAPI DllMain(HMODULE hModule, DWORD dwReason, LPVOID lpReserved)
